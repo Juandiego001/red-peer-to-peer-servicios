@@ -1,0 +1,26 @@
+{
+  "name": "red-peer-to-peer-servicios",
+  "version": "1.0.0",
+  "description": "Implementación de Red P2P para la materia de Servicios Telemáticos con el profesor Oscar Mondragon.",
+  "main": "index.js",
+  "scripts": {
+    "test": "nodemon dev-test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Juandiego001/red-peer-to-peer-servicios.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Juandiego001/red-peer-to-peer-servicios/issues"
+  },
+  "homepage": "https://github.com/Juandiego001/red-peer-to-peer-servicios#readme",
+  "devDependencies": {
+    "nodemon": "^2.0.20"
+  },
+  "dependencies": {
+    "crypto-js": "^4.1.1"
+  }
+}
