@@ -12,16 +12,22 @@ describe('Blockchain', () => {
         expect(bc.chain[0]).toEqual(Block.genesis());
     });
 
+    it('Add new data', () => {
+        const data = 'foo';
+        bc.addBlock(data);
+        expect(bc.chain[bc.chain.length - 1].data).toEqual(data);
+    })
+
+    // it('Adding new block and expect to work well', () => {
+    //     bc2.addBlock('foo');
+    //     expect(bc2.isValidChain(bc2.chain)).toBe(true);
+    // })
+
     it('Data of the last block is equal to the added', () => {
         const data = "helloworld";
         bc.addBlock(data);
         expect(bc.chain[bc.chain.length - 1].data).toEqual(data);
     });
-
-    it('Adding new block and expect to work well', () => {
-        bc2.addBlock('foo');
-        expect(bc2.isValidChain(bc2.chain)).toBe(true);
-    })
 
     it('Validate the genesis block hash', () => {
         bc2.chain[0].hash = 'asdasdasdas';
@@ -33,12 +39,6 @@ describe('Blockchain', () => {
         bc2.chain[1].data = 'asdasdas';
         expect(bc.isValidChain(bc2.chain)).toBe(false);
     });
-
-    it('Validate that the chain is replaced', () => {
-        bc2.addBlock('goo');
-        bc.replaceChain(bc2.chain);
-        expect(bc.chain).toEqual(bc2.chain);
-    })
 
     it('Validate that the chain is not replaced', () => {
         bc.addBlock('test');
