@@ -1,5 +1,5 @@
 const Block = require('./block');
-const { DIFICULTY } = require('../config');
+const { DIFFICULTY } = require('../config');
 
 describe('block', () => {
     let data, lastBlock, block;
@@ -17,8 +17,8 @@ describe('block', () => {
         expect(block.lastHash).toEqual(lastBlock.hash);
     });
 
-    it('Generates the hash to match the dificulty', () => {
-        expect(block.hash.substring(0, DIFICULTY)).toEqual("0".repeat(DIFICULTY));
+    it('Generates the hash to match the difficulty', () => {
+        expect(block.hash.substring(0, DIFFICULTY)).toEqual("0".repeat(DIFFICULTY));
     })
 
 })

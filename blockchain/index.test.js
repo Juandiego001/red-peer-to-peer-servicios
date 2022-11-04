@@ -18,10 +18,10 @@ describe('Blockchain', () => {
         expect(bc.chain[bc.chain.length - 1].data).toEqual(data);
     })
 
-    // it('Adding new block and expect to work well', () => {
-    //     bc2.addBlock('foo');
-    //     expect(bc2.isValidChain(bc2.chain)).toBe(true);
-    // })
+    it('Validate a valid chain', () => {
+        bc2.addBlock('foo');
+        expect(bc2.isValidChain(bc2.chain)).toBe(true);
+    })
 
     it('Data of the last block is equal to the added', () => {
         const data = "helloworld";
