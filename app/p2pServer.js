@@ -2,8 +2,14 @@ const webSocket = require('ws');
 const peers = process.env.PEERS ? process.env.PEERS.split(',') : [];
 const P2P_PORT = process.env.P2P_PORT || 5001;
 
+const MESSAGE_TYPES = {
+    chain: 'CHAIN',
+    transaction: 'TRANSACTION'
+}
+
 class p2pServer {
-    constructor(blockchain) {
+    constructor(blockchain, transactionsPool) {
+        this.transactionsPool = transactionsPool;
         this.blockchain = blockchain;
         this.sockets = [];
     }
@@ -32,19 +38,36 @@ class p2pServer {
     messageHandler(socket) {
         socket.on('message', message => {
             const data = JSON.parse(message);
-            this.blockchain.replaceChain(data);
-            console.log(data);
+            if (data.type == MESSAGE_TYPES.chain) {
+                this.blockchain.replaceChain(data.chain);
+            } else if (data.type == MESSAGE_TYPES.transaction) {
+                this.transactionsPool.updateOrAddTransaction(data.transaction);
+            }
         })
     }
 
     sendChain(socket) {
-        socket.send(JSON.stringify(this.blockchain.chain));
+        socket.send(JSON.stringify({
+            type: MESSAGE_TYPES.chain,
+            chain: this.blockchain.chain
+        }));
+    }
+
+    sendTransaction(socket, transaction) {
+        socket.send(JSON.stringify({
+            type: MESSAGE_TYPES.transaction,
+            transaction
+        }));
     }
 
     syncChains() {
         this.sockets.forEach(socket => {
             this.sendChain(socket);
         })
+    }
+
+    broadcastTransaction(transaction) {
+        this.sockets.forEach(socket => this.sendTransaction(socket, transaction));
     }
 }
 

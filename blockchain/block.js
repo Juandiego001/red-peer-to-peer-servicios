@@ -8,7 +8,7 @@ class Block {
         this.hash = hash;
         this.data = data;
         this.nonce = nonce;
-        this.difficulty = difficulty || DIFFICULTY;
+        this.difficulty = difficulty;
         this.processTime = processTime;
     }
 
@@ -24,7 +24,7 @@ class Block {
     }
 
     static genesis() {
-        return new this('Genesis Timestamp', '0'.repeat(64), '0'.repeat(64), [], 0);
+        return new this('Genesis Timestamp', '0'.repeat(64), '0'.repeat(64), [], 0, this.difficulty || DIFFICULTY, 0);
     }
 
     static mineBlock(lastBlock, data) {
