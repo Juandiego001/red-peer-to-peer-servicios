@@ -19,7 +19,6 @@ class ChainUtil {
 
     static verifySignature(publicKey, signature, dataHash) {
         let response = ec.keyFromPublic(publicKey, 'hex').verify(dataHash, signature);
-        console.log(response);
         return response;
     }
 }

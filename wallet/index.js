@@ -30,10 +30,17 @@ class Wallet {
         if (transaction) {
             transaction.update(this, recipient, amount);
         } else {
+            console.log('New transaction');
             transaction = Transaction.newTransaction(this, recipient, amount);
             transactionPool.updateOrAddTransaction(transaction);
         }
         return transaction;
+    }
+
+    static blockchainWallet() {
+        const blockchainWallet = new this();
+        blockchainWallet.address = 'Coinbase-000000XX';
+        return blockchainWallet;
     }
 }
 
