@@ -8,6 +8,7 @@ const amount = 20000;
 console.log(w2.publicKey);
 
 const tx = Transaction.newTransaction(w1, w2.publicKey, amount);
+tx.update(w1, w2.publicKey, 30000);
 console.log(tx);
 
 console.log('Transaction verify ' + Transaction.verifyTransaction(tx));
