@@ -25,3 +25,47 @@ Esto lo que hará será <b>clonar el repositorio, instalar las librerías necesa
 
 # Nota #1
 El nodo padre o servidor inicial intentará correr en el puerto 3000. En caso de tener el puerto ocupado, se sugiere cambiar el puerto en el archivo <code>config.js.</code>
+
+# Agregar nodos a la red
+Asumiendo que ya hemos ejecutado nuestro nodo padre con <code>npm run dev</code>, por cada nodo a agregar a la red blockchain se debe ejecutar en una nueva terminal/máquina desde la carpeta raiz del proyecto:
+
+<ol>
+  <li><pre><code>SET P2P_PORT=500?</code></pre></li>
+  <li><pre><code>SET HTTP_PORT=300?</code></pre></li>
+  <li><pre><code>SET peers=ws://localhost:500?,?</code></pre></li>
+</ol>
+
+En nuestro video lo que hicimos fue:
+
+## Primer nodo
+<pre>
+<code>
+    SET P2P_PORT=5002
+    SET HTTP_PORT=3002
+    SET peers=ws://localhost:5001
+    npm run dev
+  </code>
+</pre>
+
+## Segundo nodo
+<pre>
+<code>
+    SET P2P_PORT=5003
+    SET HTTP_PORT=3003
+    SET peers=ws://localhost:5001,ws://localhost:5002
+    npm run dev
+  </code>
+</pre>
+
+## Tercer nodo
+<pre>
+<code>
+    SET P2P_PORT=5003
+    SET HTTP_PORT=3003
+    SET peers=ws://localhost:5001,ws://localhost:5002,ws://localhost:5003
+    npm run dev
+  </code>
+</pre>
+
+# Nota #2
+Los archivos de presentación, tanto video como documento de investigación se pueden encontrar en la siguiente <a target="_blank" href="https://uao-my.sharepoint.com/personal/juan_diego_cobo_uao_edu_co/_layouts/15/onedrive.aspx?FolderCTID=0x0120003BA11E3AD7242E49B4CA26B75D0693D6&id=%2Fpersonal%2Fjuan%5Fdiego%5Fcobo%5Fuao%5Fedu%5Fco%2FDocuments%2FMaterias%2FS%C3%A9ptimo%20semestre%2FServicios%20telem%C3%A1ticos%2FProyecto%2FFinal">url.</a>
