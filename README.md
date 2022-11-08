@@ -68,4 +68,4 @@ En nuestro video lo que hicimos fue:
 </pre>
 
 # Nota #2
-Los archivos de presentación, tanto video como documento de investigación se pueden encontrar en la siguiente <a target="_blank" href="https://uao-my.sharepoint.com/personal/juan_diego_cobo_uao_edu_co/_layouts/15/onedrive.aspx?FolderCTID=0x0120003BA11E3AD7242E49B4CA26B75D0693D6&id=%2Fpersonal%2Fjuan%5Fdiego%5Fcobo%5Fuao%5Fedu%5Fco%2FDocuments%2FMaterias%2FS%C3%A9ptimo%20semestre%2FServicios%20telem%C3%A1ticos%2FProyecto%2FFinal">url.</a>
+Los archivos de presentación, tanto video como documento de investigación se pueden encontrar en la siguiente <a target="_blank" href="https://uao-my.sharepoint.com/:f:/g/personal/juan_diego_cobo_uao_edu_co/EojTxafee_VBkcgMlxzQ63YBqG3Ptr0irGCmjb5NZrOKlA">url.</a>
