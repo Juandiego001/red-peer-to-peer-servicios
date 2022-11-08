@@ -14,6 +14,8 @@ const bc = new Blockchain();
 const wallet = new Wallet();
 const tp = new TransactionPool();
 
+const theWallets = [];
+
 const app = express();
 const HTTP_PORT = process.env.HTTP_PORT || 3000;
 
@@ -28,6 +30,14 @@ app.get('/blocks', (req, res) => {
     res.json(bc.chain);
 })
 
+app.get('/balance', (req, res) => {
+    res.json(wallet.calculateBalance(bc, wallet.publicKey));
+})
+
+app.post('/address-balance', (req, res) => {
+    res.json(wallet.calculateBalance(bc, req.body.address));
+})
+
 app.post('/mine', (req, res) => {
     const theBlock = bc.addBlock(req.body.data);
     console.log(`Block added succesfull: ${theBlock.toString()}`);
@@ -40,8 +50,8 @@ app.get('/transactions', (req, res) => {
 });
 
 app.post('/transaction', (req, res) => {
-    const { recipient, amount } = req.body;
-    const transaction = wallet.createTransaction(recipient, amount, tp);
+    const { recipient, amount, message } = req.body;
+    const transaction = wallet.createTransaction(recipient, amount, bc, tp, message);
     p2pServer.broadcastTransaction(transaction);
     res.redirect('/transactions');
 })

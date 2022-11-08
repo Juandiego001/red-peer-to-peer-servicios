@@ -31,12 +31,17 @@ class Block {
         let hash, timestamp;
         const lastHash = lastBlock.hash;
         let { difficulty } = lastBlock;
+
+        
         let nonce = 0;
         let timeStart = Date.now();
         do {
             nonce++;
             timestamp = Date.now();
             difficulty = Block.adjustDifficulty(lastBlock, timestamp);
+
+            difficulty = difficulty < 0 ? 0 : difficulty;
+
             hash = Block.hash(timestamp, lastHash, data, nonce);
         } while (hash.substring(0, difficulty) != "0".repeat(difficulty));
         let timeEnd = Date.now();
